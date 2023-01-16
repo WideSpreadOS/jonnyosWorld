@@ -1,0 +1,191 @@
+<style>
+
+</style>
+
+
+<div class="page-header">
+    <h1><%= pageTitle %></h1>
+</div>
+
+
+<div class="spread-card-container">
+    <div class="spread-card">
+        <div class="spread-card-data" style="background-image: url('/images/spreadshield_contacts-list.jpg');">
+
+            <div class="spread-card-header">
+                <h2>WideSpread</h2>
+            </div>
+            <div class="spread-card-body">
+                <p>This is my "playground". This is where I try out all new web technologies, the more I try, the bigger & better WideSpread becomes.</p>
+            </div>
+            <div class="spread-card-footer">
+                <a href="/single-project/widespread">Check it Out!</a>
+            </div>
+        </div>
+    </div>
+    <div class="spread-card">
+        <div class="spread-card-data" style="background-image: url('/images/spreadshield_2d-map+contacts-list.jpg');">
+
+            <div class="spread-card-header">
+                <h2>eCommerce</h2>
+            </div>
+            <div class="spread-card-body">
+                <p>This isn't one project, rather a collection of all eCommerce sites that currently in operation.</p>
+            </div>
+            <div class="spread-card-footer">
+                <a href="/single-project/ecommerce">Check it Out!</a>
+            </div>
+        </div>
+    </div>
+    <div class="spread-card">
+        <div class="spread-card-data" style="background-image: url('/images/spreadshield_touch-interface_2.jpg');">
+
+            <div class="spread-card-header">
+                <h2>AR & VR</h2>
+            </div>
+            <div class="spread-card-body">
+                <p>Another collection of multiple projects using WebGL and threeJS along with other 3D javascript libraries.</p>
+                <div class="spread-card-body-slider">
+                    <img src="/images/spreadshield_touch-interface_2.jpg" alt="SpreadShield Touchscreen Interface">
+                    <img src="/images/spreadshield_touch-interface_2.jpg" alt="SpreadShield Touchscreen Interface">
+                    <img src="/images/spreadshield_touch-interface_2.jpg" alt="SpreadShield Touchscreen Interface">
+                    <img src="/images/spreadshield_touch-interface_2.jpg" alt="SpreadShield Touchscreen Interface">
+                </div>
+            </div>
+            <div class="spread-card-footer">
+                <a href="/single-project/ar-vr">Check it Out!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="virtualKeyboardData">
+    <table>
+        <caption>Virtual Keyboard Data</caption>
+        <thead class="hidden">
+            <tr>
+                <th>Property</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody class="hidden">
+            <tr>
+                <td>bottom</td>
+                <td id="VK_BOT"></td>
+            </tr>
+            <tr>
+                <td>height</td>
+                <td id="VK_HT"></td>
+            </tr>
+            <tr>
+                <td>left</td>
+                <td id="VK_LEFT"></td>
+            </tr>
+            <tr>
+                <td>right</td>
+                <td id="VK_RT"></td>
+            </tr>
+            <tr>
+                <td>top</td>
+                <td id="VK_TOP"></td>
+            </tr>
+            <tr>
+                <td>width</td>
+                <td id="VK_WIDTH"></td>
+            </tr>
+            <tr>
+                <td>x</td>
+                <td id="VK_X"></td>
+            </tr>
+            <tr>
+                <td>y</td>
+                <td id="VK_Y"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="hidden" id="VK_BTN">Get Virtual Keyboard Data</div>
+</div>
+
+<script>
+    const sliders = document.querySelectorAll('.spread-card-body-slider')
+    const bodyEl = document.body
+    const
+        VK_BOT = document.getElementById('VK_BOT'),
+        VK_HT = document.getElementById('VK_HT'),
+        VK_LEFT = document.getElementById('VK_LEFT'),
+        VK_RT = document.getElementById('VK_RT'),
+        VK_TOP = document.getElementById('VK_TOP'),
+        VK_WIDTH = document.getElementById('VK_WIDTH'),
+        VK_X = document.getElementById('VK_X'),
+        VK_Y = document.getElementById('VK_Y'),
+        VK_BTN = document.getElementById('VK_BTN'),
+        VK_TABLE = document.getElementsByTagName('table'),
+        VK_TABLE_CAPTION = document.getElementsByTagName('caption')
+        VK_THEAD = document.getElementsByTagName('thead')
+        VK_TBODY = document.getElementsByTagName('tbody')
+
+
+    var top = window.pageYOffset,
+            left = window.pageXOffset
+
+    console.log('Navigator: ', window.navigator)
+
+    
+
+    // window.navigator.virtualKeyboard.overlaysContent = true
+    const virtualKeyboard = window.navigator.virtualKeyboard.boundingRect
+    console.log(virtualKeyboard)
+    console.log('top: ', top)
+    console.log('left: ', left)
+    VK_BTN.addEventListener('click', e => {
+        console.log(e.target)
+        get_VK_data()
+    })
+
+    VK_TABLE_CAPTION[0].addEventListener('click', e => {
+        VK_TBODY[0].classList.toggle('hidden')
+        VK_THEAD[0].classList.toggle('hidden')
+        VK_BTN.classList.toggle('hidden')
+    })
+
+    function get_VK_data() {
+        VK_BOT.innerText = virtualKeyboard.bottom + 'px'
+        VK_HT.innerText = virtualKeyboard.height + 'px'
+        VK_LEFT.innerText = virtualKeyboard.left + 'px'
+        VK_RT.innerText = virtualKeyboard.right + 'px'
+        VK_TOP.innerText = virtualKeyboard.top + 'px'
+        VK_WIDTH.innerText = virtualKeyboard.width + 'px'
+        VK_X.innerText = virtualKeyboard.x + 'px'
+        VK_Y.innerText = virtualKeyboard.y + 'px'
+    }
+
+    function getElSize(elem) {
+
+        // const getElData = elem.getBoundingClientRect()
+        const getElData = elem.getClientRects()
+        // console.log(elem)
+        console.log(getElData)
+        const parentEl = elem.parentNode
+        console.log(parentEl)
+        const parentSize = parentEl.getClientRects()
+        console.log(parentSize)
+    }
+    bodyEl.addEventListener('click', e => {
+
+        sliders.forEach(slider => {
+            const sliderImgs = slider.querySelectorAll('img')
+            console.log('Total images in slider: ', sliderImgs.length)
+            sliderImgs.forEach((img, index) => {
+                getElSize(img)
+                if (index == (sliderImgs.length - 1)){
+                    console.log('Last Image: ', img)
+                    getElSize(img)
+                }
+            })
+            // getElSize(slider)
+        })
+
+    })
+
+
+</script>

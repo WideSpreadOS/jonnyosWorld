@@ -1,0 +1,453 @@
+    @media screen and (min-width: 300px) {
+        .hidden {
+            display: none;
+        }
+        .spread-card-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-evenly;
+            gap: 5rem;
+            margin-inline: auto;
+            margin-bottom: 50px;
+            width: 95%;
+            margin-inline: auto;
+        }
+
+        .spread-card {
+            width: 100%;
+            min-width: 300px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem;
+            border-radius: 16px;
+            border: solid 1px aqua;
+            border-left: solid 1px transparent;
+            border-right: solid 1px transparent;
+            transition: ease-in-out 750ms;
+            background-color: transparent;
+            backdrop-filter: blur(4px);
+            transition: ease-in-out 750ms;
+        }
+
+        .spread-card h5 {
+            color: #fff;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        .spread-card p {
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 8px;
+        }
+        .spread-card:hover {
+            background-color: #01010125;
+            border-left: solid 1px aqua;
+            border-right: solid 1px aqua;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .spread-card-data {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 16px;
+            transition: ease-in-out 500ms;
+            border: solid 1px transparent;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.6);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .spread-card:hover .spread-card-data {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 255, 255, 0.5);
+            border: solid 1px aqua;
+        }
+
+        .spread-card-header,
+        .spread-card-body,
+        .spread-card-footer {
+            width: calc(100% + 2px);
+        }
+
+        .spread-card-header {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -1px;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            background-color: rgba(0, 255, 255, 0.25);
+
+        }
+
+        .spread-card-header h2 {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: lighter;
+            padding: 1rem;
+
+        }
+
+        .spread-card-body {
+            border-bottom: solid 1px aqua;
+            border-top: solid 1px aqua;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spread-card-body p {
+            color: #fff;
+            font-size: 1rem;
+            width: 100%;
+            margin-inline: auto;
+            padding: 15px;
+            border-top: solid 1px #fff;
+            border-bottom: solid 1px #fff;
+            border-left: solid 1px transparent;
+            border-right: solid 1px transparent;
+            backdrop-filter: blur(10px);
+            background-color: #01010125;
+            transition: ease-in-out 500ms;
+        }
+        .spread-card:hover .spread-card-body p {
+            border-left: solid 1px aqua;
+            border-right: solid 1px aqua;
+
+        }
+        .spread-card-body-slider {
+            width: 90%;
+            border-left: solid 1px aqua;
+            border-right: solid 1px aqua;
+            margin-top: 20px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-x: auto;
+            gap: 2rem;
+            height: 150px;
+            overflow-y: hidden;
+            padding: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .spread-card-body-slider::-webkit-scrollbar {
+            /* width: 12px;
+        height: 12px; */
+            width: 12px;
+            height: 12px;
+        }
+
+        /* Track */
+        .spread-card-body-slider::-webkit-scrollbar-track {}
+
+        .spread-card-body-slider::-webkit-scrollbar-track-piece {
+            box-shadow: inset 0 0 5px rgba(255, 255, 255, 1);
+            border-radius: 0;
+            border-top-left-radius: 100%;
+            border-top-right-radius: 100%;
+            padding: 5px;
+            background-color: transparent;
+        }
+
+        /* Handle */
+        .spread-card-body-slider::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 1);
+            backdrop-filter: blur(10px);
+            height: 5px;
+            width: 5px;
+            max-width: 5px;
+            max-height: 5px;
+            border-top-left-radius: 100%;
+            border-top-right-radius: 100%;
+            padding: 2px;
+            transition: ease-in-out 500ms;
+        }
+
+        .spread-card-body-slider::-webkit-scrollbar-button {
+            background-color: transparent;
+        }
+
+        /* Handle on hover */
+        .spread-card-body-slider::-webkit-scrollbar-thumb:hover,
+        .spread-card-body-slider:hover::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 255, 255, 1);
+            box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.75);
+        }
+
+        .spread-card-body-slider img {
+            max-height: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 5px aqua;
+        }
+
+        .spread-card-footer {
+            text-align: center;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 255, 255, 0.75);
+            box-shadow: inset 0 0 15px #fff;
+            margin-bottom: -1px;
+        }
+
+        .spread-card-footer a {
+            padding: 1rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: #fff;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    @media screen and (orientation: landscape) {
+        .spread-card {
+            width: 100%;
+        }
+
+        .spread-card-data {
+            position: relative;
+            width: 100%;
+            max-height: 100%;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            margin-top: 0;
+            height: 100%;
+        }
+
+        .spread-card:hover .spread-card-data {
+            scale: none;
+        }
+
+        .spread-card-header,
+        .spread-card-body,
+        .spread-card-footer {
+            position: absolute;
+        }
+
+        .spread-card-header,
+        .spread-card-footer {
+            width: 40%;
+            left: 0;
+            border: none;
+        }
+
+        .spread-card-header {
+            top: 0;
+            border-radius: 0;
+            border-top-left-radius: 16px
+        }
+
+        .spread-card-footer {
+            bottom: 0;
+            border-radius: 0;
+            border-bottom-left-radius: 16px;
+        }
+
+        .spread-card-footer a {
+            font-size: 1.5rem;
+        }
+
+        .spread-card-body {
+            border: none;
+            border-left: solid 1px aqua;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            overflow-y: auto;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0;
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+
+        .spread-card-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .spread-card-body-slider {
+            height: 100px;
+            margin-inline: auto;
+            width: 90%;
+            min-height: 100px;
+        }
+
+        .spread-card-body-slider img {
+            height: 100%;
+            max-height: 150px;
+            width: auto;
+        }
+    }
+
+    @media screen and (min-width: 900px) {
+
+        .spread-card-data {
+            width: 80%;
+        }
+
+        .spread-card:hover .spread-card-data {
+            /* scale: 1.1; */
+        }
+
+        .spread-card-header h2 {
+            font-size: 3rem;
+        }
+    }
+
+    @media screen and (orientation: landscape) and (min-width: 900px) {
+        .spread-card {
+            width: 40%;
+            max-height: 50vh;
+
+        }
+
+        .spread-card-data {
+            flex-direction: column;
+        }
+
+        .spread-card-header,
+        .spread-card-body,
+        .spread-card-footer {
+            position: relative;
+            top: auto;
+            left: auto;
+            right: auto;
+            bottom: auto;
+            width: calc(100% + 2px);
+        }
+
+        .spread-card-header {
+            margin-top: -1px;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            background-color: rgba(0, 255, 255, 0.25);
+        }
+
+        .spread-card-body {
+            border: none;
+            border-top: solid 1px aqua;
+            border-bottom: solid 1px aqua;
+            border-radius: 0;
+            width: calc(100% + 2px);
+        }
+
+        .spread-card-body p {
+            font-size: 1.2rem;
+        }
+
+        .spread-card-body-slider {
+            background-color: transparent;
+            transition: ease-in-out 500ms;
+            backdrop-filter: blur(0);
+        }
+
+        .spread-card-body-slider:hover {
+            background-color: rgba(0, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+        }
+
+        .spread-card-body-slider:hover::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 255, 255, 1);
+            box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.75);
+        }
+
+        .spread-card-footer {
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            transition: ease-in-out 250ms;
+        }
+
+        .spread-card-footer:hover {
+            background-color: aqua;
+        }
+
+        .spread-card-footer:hover a {
+            text-shadow: 0 0 5px #000;
+        }
+
+
+    }
+    #virtualKeyboardData {
+        margin-bottom: 100vh;
+
+    }
+    #VK_BTN {
+        background-color: rgba(0, 0, 0, 0.5);
+        box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.75);
+        color: lime;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-inline: auto;
+        width: 80vw;
+        text-align: center;
+        padding: 10px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+
+    }
+    table {
+        width: 100%;
+        background-color: lime;
+        border-collapse: collapse;
+    }
+
+    table caption {
+        background-color: #000;
+        color: lime;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    th,
+    td {
+        padding: 3px;
+        width: 50%;
+    }
+
+    th {
+        border-bottom: solid 1px #000;
+    }
+
+    table tr td:first-of-type {
+        text-align: right;
+        font-weight: bold;
+    }
+
+    table tr td:last-of-type {
+        text-align: left;
+        position: relative;
+        padding-left: 6px;
+    }
+
+    table tr td:last-of-type::before {
+        position: absolute;
+        content: ':';
+        top: 0;
+        left: -3px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        text-align: center;
+        width: 5px;
+        color: #000;
+        font-weight: bold;
+    }

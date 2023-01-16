@@ -1,0 +1,102 @@
+<style>
+    .hidden {
+        display: none;
+    }
+    .spread-card {
+        height: auto;
+    }
+    #bigImageEl {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: calc(100vh - 3rem);
+        max-height: calc(100vh - 3rem);
+        z-index: 99998;
+        backdrop-filter: blur(10px);
+    }
+    .big-image-el-inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: calc(100vh - 3rem);
+        min-height: calc(100vh - 3rem);
+        max-height: calc(100vh - 3rem);
+    }
+    #bigImageEl img {
+        position: relative;
+        z-index: 99999;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 12px;
+        box-shadow: 0 20px 15px rgba(0, 0, 0, 0.6);
+        pointer-events: none;
+    }
+    .project-photos {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 2rem;
+        padding: 1rem;    
+        margin-bottom: 30px;
+    }
+    .project-photos img {
+        max-width: 300px;
+        max-height: 80vh;
+        border-radius: 12px;
+        filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.6));
+    }
+</style>
+
+
+<div class="page-header">
+    <h1><%= subPageTitle %></h1>
+</div>
+<div class="spread-card-container">
+
+    <div class="spread-card">
+        <h5>TO DO:</h5>
+        <p>Add Prev/Next buttons to fullscreen image</p>
+        <p>Add data-image-type="" to images with 'laptop', 'cell', 'tablet'</p>
+        <p>Add data-image-orientation="" to images with 'landscape', 'portrait'</p>
+    </div>
+
+</div>
+<div class="project-photos">
+    <% photos.forEach(function(photo) { %>
+        <img src="<%= photo %>" alt="A photo for <%= pageTitle %>">
+    <% }) %>
+</div>
+
+<div id="bigImageEl" class="hidden">
+    <div class="big-image-el-inner">
+        <img id="bigImage" src="" alt="">
+    </div>
+</div>
+
+<script>
+    const 
+        allImages = document.querySelectorAll('img'),
+        bigImageEl = document.getElementById('bigImageEl'),
+        bigImage = document.getElementById('bigImage'),
+        mainMenuBg = document.getElementById('mainMenu')
+
+    allImages.forEach(image => {
+        image.addEventListener('click', e => {
+            bigImageEl.style.display = 'block'
+            mainMenuBg.style.backgroundColor = '#010101'
+            mainMenuBg.style.transition = 'ease-in-out 500ms'
+            const imgSrc = e.target.getAttribute('src')
+            console.log(imgSrc)
+            bigImage.src = imgSrc
+            bigImageEl.addEventListener('click', e => {
+                bigImage.src = ''
+                bigImageEl.style.display = 'none'
+                mainMenuBg.style.backgroundColor = '#01010125'
+            })
+        })
+    })
+</script>

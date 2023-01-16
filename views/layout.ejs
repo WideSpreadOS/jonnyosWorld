@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonny O's World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&family=Thasadith:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        /* 
+        font-family: 'Herr Von Muellerhoff', cursive;
+        font-family: 'Thasadith', sans-serif;
+        */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #010101;
+            font-family: 'Thasadith', sans-serif;
+
+        }
+
+        #bgImage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 100vw;
+            overflow: hidden;
+            height: 100vh;
+            z-index: -9999;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+        .page-header {
+            margin-bottom: 50px;    
+        }
+        .page-header h1 {
+            font-family: 'Herr Von Muellerhoff', cursive;
+            text-align: center;
+            font-size: 3rem;
+            padding-top: 5px;
+            font-weight: lighter;
+            color: #fff;
+        }
+
+        @media screen and (min-width: 300px) {
+            .page-title {
+                background-color: lime;
+            }
+            
+            
+            #mainMenu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100vw;
+                height: 3rem;
+                z-index: 80000;
+                background-color: #01010125;
+                backdrop-filter: blur(4px);
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: center;
+                justify-content: space-evenly;
+                border-bottom: solid 2px aqua;
+                box-shadow: 0 0 20px rgba(0, 255, 242, 0.958);
+            }
+            #mainMenu .main-menu-item a {
+                font-family: 'Herr Von Muellerhoff', cursive;
+                padding: 15px;
+                font-size: 1.5rem;
+                color: #fff;
+                text-decoration: none;
+            }
+            #mainMenu .main-menu-item-active a {
+                color: aqua;
+            }
+            #mainContainer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100vw;
+                right: 0;
+                padding-top: 100px;
+                margin-top: 100px;
+                z-index: -1;
+                height: 100vh;
+                min-height: 100vh;
+                max-height: 100vh;
+                overflow-x: hidden;
+                overflow-x: auto;
+    
+            }
+
+        }
+        @media screen and (min-width: 900px) {
+            #mainMenu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100vw;
+                height: 5rem;
+                background-color: #01010125;
+                backdrop-filter: blur(4px);
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: center;
+                justify-content: space-evenly;
+                border-bottom: solid 2px aqua;
+                box-shadow: 0 0 20px rgba(0, 255, 242, 0.958);
+                transition: ease-in-out 500ms;
+            }
+            #mainMenu:hover {
+                backdrop-filter: blur(10px);
+                background-color: rgba(0, 255, 255, 0.25);
+            }
+            #mainMenu .main-menu-item a {
+                font-family: 'Herr Von Muellerhoff', cursive;
+                padding: 15px;
+                font-size: 2.5rem;
+                color: #fff;
+                text-decoration: none;
+                transition: ease-out 1250ms;
+                text-shadow: 0 0 2px transparent;
+            }
+            #mainMenu .main-menu-item-active a {
+                color: aqua;
+            }
+            #mainMenu .main-menu-item a:hover {
+                text-shadow: 0 0 6px #010101;
+                color: aqua;
+                transition: ease-in 250ms;
+            }
+
+
+        }
+    </style>
+</head>
+<body>
+    <div id="bgImage" style="background-image: url('/images/bg_1.jpg');">
+    <!-- <img src="/images/bg_1.jpg" alt=""></div> -->
+    <div id="mainMenu">
+        <% if (pageTitle == 'Home') { %>
+            <div class="main-menu-item main-menu-item-active"><a href="/">Home</a></div>
+            <% } else { %>
+                <div class="main-menu-item"><a href="/">Home</a></div>
+        <% } %>
+        <% if (pageTitle == 'Portfolio') { %>
+            <div class="main-menu-item main-menu-item-active"><a href="/portfolio">Portfolio</a></div>
+            <% } else { %>
+                        <div class="main-menu-item"><a href="/portfolio">Portfolio</a></div>
+        <% } %>
+        <% if (pageTitle == 'Contact') { %>
+            <div class="main-menu-item main-menu-item-active"><a href="/contact">Contact</a></div>
+            <% } else { %>
+                <div class="main-menu-item"><a href="/contact">Contact</a></div>
+        <% } %>
+    </div>
+    <div id="mainContainer">
+        <%- body %>
+    </div>
+</body>
+</html>
