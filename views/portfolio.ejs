@@ -103,13 +103,15 @@
             </tr>
         </tbody>
     </table>
-    <div class="hidden" id="VK_BTN">Get Virtual Keyboard Data</div>
+    <div class="test-button hidden" id="VK_BTN">Get Virtual Keyboard Data</div>
+    <div class="test-button hidden" id="showKeyboard">Show Virtual Keyboard</div>
 </div>
 
 <script>
     const sliders = document.querySelectorAll('.spread-card-body-slider')
     const bodyEl = document.body
     const
+        showKeyboard = document.getElementById('showKeyboard'),
         VK_BOT = document.getElementById('VK_BOT'),
         VK_HT = document.getElementById('VK_HT'),
         VK_LEFT = document.getElementById('VK_LEFT'),
@@ -120,20 +122,26 @@
         VK_Y = document.getElementById('VK_Y'),
         VK_BTN = document.getElementById('VK_BTN'),
         VK_TABLE = document.getElementsByTagName('table'),
-        VK_TABLE_CAPTION = document.getElementsByTagName('caption')
-        VK_THEAD = document.getElementsByTagName('thead')
+        VK_TABLE_CAPTION = document.getElementsByTagName('caption'),
+        VK_THEAD = document.getElementsByTagName('thead'),
         VK_TBODY = document.getElementsByTagName('tbody')
 
 
     var top = window.pageYOffset,
             left = window.pageXOffset
 
-    console.log('Navigator: ', window.navigator)
 
+    if ('virtualKeyboard' in navigator) {
+        console.log('Navigator: ', window.navigator)
+        window.navigator.virtualKeyboard.overlaysContent = true
+        showKeyboard.addEventListener('click', e => {
+            navigator.virtualKeyboard.show()
+        })
+    }
+
+    const virtualKeyboard = window.navigator.virtualKeyboard.boundingRect
     
 
-    // window.navigator.virtualKeyboard.overlaysContent = true
-    const virtualKeyboard = window.navigator.virtualKeyboard.boundingRect
     console.log(virtualKeyboard)
     console.log('top: ', top)
     console.log('left: ', left)
@@ -146,6 +154,7 @@
         VK_TBODY[0].classList.toggle('hidden')
         VK_THEAD[0].classList.toggle('hidden')
         VK_BTN.classList.toggle('hidden')
+        showKeyboard.classList.toggle('hidden')
     })
 
     function get_VK_data() {
