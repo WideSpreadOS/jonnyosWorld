@@ -59,7 +59,7 @@
     </div>
 </div>
 
-<div id="virtualKeyboardData">
+<div id="virtualKeyboardData" onclick="display(event)">
     <table>
         <caption>Virtual Keyboard Data</caption>
         <thead class="hidden">
@@ -103,16 +103,30 @@
             </tr>
         </tbody>
     </table>
-    <input type="text" placeholder="Try to open keyboard....">
+    <form action="">
+        <input id="testText" type="text" placeholder="Try to open keyboard....">
+    </form>
     <div class="test-button hidden" id="VK_BTN">Get Virtual Keyboard Data</div>
     <div class="test-button hidden" id="showKeyboard">Show Virtual Keyboard</div>
+    <input type="text" id="cursorX" size="3"> X-position of the mouse cursor
+    <br /><br />
+    <input type="text" id="cursorY" size="3"> Y-position of the mouse cursor
+<p id="result"></p>
 </div>
 
 <script>
+        function display(event) {
+            let x = event.clientX;
+            let y = event.clientY;
+            let result = document.getElementById("result");
+            result.innerHTML = `<b>X-coordinate: </b> X: ${x} - Y: ${y}`;
+            navigator.virtualKeyboard.show()
+        }
     const sliders = document.querySelectorAll('.spread-card-body-slider')
     const bodyEl = document.body
     const
         showKeyboard = document.getElementById('showKeyboard'),
+        testText = document.getElementById('testText'),
         VK_BOT = document.getElementById('VK_BOT'),
         VK_HT = document.getElementById('VK_HT'),
         VK_LEFT = document.getElementById('VK_LEFT'),
@@ -139,7 +153,20 @@
             navigator.virtualKeyboard.show()
         })
     }
+    testText.addEventListener('keypress', e => {
+        console.log(e)
+        get_VK_data()
+        display()
+        const 
+            mouseX = parseInt(document.body.clientX),
+            mouseY = (window.Event) ? e.pageY : event.clientY + (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop),
+            mousePos = `Current Mouse Position: X: ${mouseX} - Y: ${mouseY}`
+            
+        console.log(mousePos)
+    })
 
+
+    testText.addEventListener("change", get_VK_data)
     const virtualKeyboard = window.navigator.virtualKeyboard.boundingRect
     
 
