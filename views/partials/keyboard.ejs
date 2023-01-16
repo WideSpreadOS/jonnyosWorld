@@ -1,0 +1,159 @@
+<style>
+    #keyboardContainer {
+    }
+    #keyboard {
+        /* background-color: aqua; */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 255, 255, 0.25);
+        backdrop-filter: blur(10px);
+        padding-top: 8px
+    }
+    .keyboard-row {
+        /* border: solid 1px blue; */
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        padding: 3px;
+        gap: 0.25rem;
+    }
+    .keyboard-key {
+        width: 100%;
+        text-align: center;
+        padding: 5px;
+        background-color: #01010175;
+        box-shadow: 0 0 5px aqua;
+        border-radius: 4px;
+        color: #fff;
+    }
+    #row4 > div {
+        width: 60%;
+    }
+    #keyboardOptions {
+        background-color: #01010175;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .keyboard-option {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+    }
+    .keyboard-option i {
+        font-size: 1.5rem;
+        color: #fff;
+    }
+</style>
+
+
+<div id="keyboardContainer">
+    <div id="keyboard" class="hidden">
+        <div class="keyboard-row" id="row0"></div>
+        <div class="keyboard-row" id="row1"></div>
+        <div class="keyboard-row" id="row2"></div>
+        <div class="keyboard-row" id="row3"></div>
+        <div class="keyboard-row" id="row4"></div>
+    </div>
+    <div id="keyboardOptions">
+        <div class="keyboard-option"><i class="bx bx-brightness-half"></i></div>
+        <div class="keyboard-option"><i class="bx bx-cool"></i></div>
+        <div class="keyboard-option"><i class="bx bx-cog"></i></div>
+        <div id="openCloseKeyboard" data-state="false" class="keyboard-option"><i class="bx bx-caret-up-circle" id="showIcon"></i><i class="bx bx-caret-down-circle hidden" id="hideIcon"></i></div>
+    </div>
+</div>
+
+<script>
+    const 
+        keyboardContainer = document.getElementById('keyboardContainer'),
+        keyboardOptions = document.getElementById('keyboardOptions'),
+        showIcon = document.getElementById('showIcon'),
+        hideIcon = document.getElementById('hideIcon'),
+        keyboard = document.getElementById('keyboard'),
+        row0 = document.getElementById('row0'),
+        row1 = document.getElementById('row1'),
+        row2 = document.getElementById('row2'),
+        row3 = document.getElementById('row3'),
+        row4 = document.getElementById('row4'),
+        openCloseKeyboard = document.getElementById('openCloseKeyboard')
+
+
+        function buildKeyboard() {
+            let allRows = []
+            let row0Data = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', '<-']
+            let row1Data = ['tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']']
+            let row2Data = ['caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', ';', "'", 'enter']
+            let row3Data = ['shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'shift']
+            let row4Data = ['space']
+            console.log(row0Data.length)
+            console.log(row1Data.length)
+            row0Data.forEach(data => {
+                const newKey = document.createElement('div')
+                newKey.classList.add('keyboard-key')
+                newKey.setAttribute('data-key-id', data)
+                newKey.innerText = data
+                row0.appendChild(newKey)
+            })
+
+            row1Data.forEach(data => {
+                const newKey = document.createElement('div')
+                newKey.classList.add('keyboard-key')
+                newKey.setAttribute('data-key-id', data)
+                newKey.innerText = data
+                row1.appendChild(newKey)
+            })
+        
+            row2Data.forEach(data => {
+                const newKey = document.createElement('div')
+                newKey.classList.add('keyboard-key')
+                newKey.setAttribute('data-key-id', data)
+                newKey.innerText = data
+                row2.appendChild(newKey)
+            })
+            row3Data.forEach(data => {
+                const newKey = document.createElement('div')
+                newKey.classList.add('keyboard-key')
+                newKey.setAttribute('data-key-id', data)
+                newKey.innerText = data
+                row3.appendChild(newKey)
+            })
+            row4Data.forEach(data => {
+                const newKey = document.createElement('div')
+                newKey.classList.add('keyboard-key')
+                newKey.setAttribute('data-key-id', data)
+                newKey.innerText = data
+                row4.appendChild(newKey)
+            })
+        }
+        buildKeyboard()
+        openCloseKeyboard.addEventListener('click', e => {
+            let keyboardState = openCloseKeyboard.getAttribute('data-state')
+            let el = e.target
+            console.log(el)
+
+
+            if (keyboardState == 'false') {
+                openCloseKeyboard.setAttribute('data-state', 'true')
+                console.log('HIDE UP CARET')
+                showIcon.classList.toggle('hidden')
+                hideIcon.classList.toggle('hidden')
+                keyboard.classList.toggle('hidden')
+            } else if (keyboardState == 'true') {
+                openCloseKeyboard.setAttribute('data-state', 'false')
+                console.log('HIDE DOWN CARET')
+                showIcon.classList.toggle('hidden')
+                hideIcon.classList.toggle('hidden')
+                keyboard.classList.toggle('hidden')
+            } else {
+                console.log('hmmmm.... no keyboard state')
+            }
+
+    })
+</script>

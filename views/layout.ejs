@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&family=Thasadith:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="/style.css">
     <style>
         /* 
@@ -39,6 +40,15 @@
             background-size: cover;
             
         }
+        #coreKeyboard {
+            position: fixed;
+            z-index: 99999;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100vw;
+            border-top: solid 2px aqua;
+        }
         .page-header {
             margin-bottom: 50px;    
         }
@@ -53,7 +63,8 @@
 
         @media screen and (min-width: 300px) {
             .page-title {
-                background-color: lime;
+                background-color: aqua;
+                box-shadow: 0 0 10px aqua;
             }
             
             
@@ -170,6 +181,9 @@
     </div>
     <div id="mainContainer">
         <%- body %>
+    </div>
+    <div id="coreKeyboard">
+        <%- include('./partials/keyboard'); %>
     </div>
 </body>
 </html>
