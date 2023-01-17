@@ -1,7 +1,110 @@
+/* 
+font-family: 'Herr Von Muellerhoff', cursive;
+font-family: 'Thasadith', sans-serif;
+*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #010101;
+    font-family: 'Thasadith', sans-serif;
+
+}
+
+#bgImage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    overflow: hidden;
+    height: 100vh;
+    z-index: -9999;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+#coreKeyboard {
+    position: fixed;
+    z-index: 99999;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    border-top: solid 2px aqua;
+    background-color: rgba(0, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+}
+.page-header {
+    margin-bottom: 50px;    
+}
+.page-header h1 {
+    font-family: 'Herr Von Muellerhoff', cursive;
+    text-align: center;
+    font-size: 3rem;
+    padding-top: 5px;
+    font-weight: lighter;
+    color: #fff;
+}
+
+
 .hidden {
     display: none;
 }
     @media screen and (min-width: 300px) {
+        .page-title {
+            background-color: aqua;
+            box-shadow: 0 0 10px aqua;
+        }
+        
+        
+        #mainMenu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100vw;
+            height: 3rem;
+            z-index: 80000;
+            background-color: #01010125;
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: space-evenly;
+            border-bottom: solid 2px aqua;
+            box-shadow: 0 0 20px rgba(0, 255, 242, 0.958);
+        }
+        #mainMenu .main-menu-item a {
+            font-family: 'Herr Von Muellerhoff', cursive;
+            padding: 15px;
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+        }
+        #mainMenu .main-menu-item-active a {
+            color: aqua;
+        }
+        #mainContainer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            right: 0;
+            padding-top: 100px;
+            margin-top: 100px;
+            z-index: -1;
+            height: 100vh;
+            min-height: 100vh;
+            max-height: 100vh;
+            overflow-x: hidden;
+            overflow-x: auto;
+    
+        }
         .hidden {
             display: none;
         }
@@ -303,7 +406,45 @@
     }
 
     @media screen and (min-width: 900px) {
-
+        #mainMenu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100vw;
+            height: 5rem;
+            background-color: #01010125;
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: space-evenly;
+            border-bottom: solid 2px aqua;
+            box-shadow: 0 0 20px rgba(0, 255, 242, 0.958);
+            transition: ease-in-out 500ms;
+        }
+        #mainMenu:hover {
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 255, 255, 0.25);
+        }
+        #mainMenu .main-menu-item a {
+            font-family: 'Herr Von Muellerhoff', cursive;
+            padding: 15px;
+            font-size: 2.5rem;
+            color: #fff;
+            text-decoration: none;
+            transition: ease-out 1250ms;
+            text-shadow: 0 0 2px transparent;
+        }
+        #mainMenu .main-menu-item-active a {
+            color: aqua;
+        }
+        #mainMenu .main-menu-item a:hover {
+            text-shadow: 0 0 6px #010101;
+            color: aqua;
+            transition: ease-in 250ms;
+        }
         .spread-card-data {
             width: 80%;
         }
