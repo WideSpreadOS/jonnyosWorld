@@ -10,7 +10,6 @@ font-family: 'Thasadith', sans-serif;
 body {
     background-color: #010101;
     font-family: 'Thasadith', sans-serif;
-
 }
 
 #bgImage {
@@ -39,7 +38,12 @@ body {
     backdrop-filter: blur(10px);
 }
 .page-header {
-    margin-bottom: 50px;    
+    margin-top: 100px;    
+    margin-bottom: 30px;    
+    border-top: solid 1px #fff;
+    border-bottom: solid 1px #fff;
+    width: 100%;
+    z-index: 3;
 }
 .page-header h1 {
     font-family: 'Herr Von Muellerhoff', cursive;
@@ -648,22 +652,43 @@ button:hover {
 
 
         .range__wrapper {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+            /* position: absolute; */
+            z-index: 2;
+            /* left: 50%; */
+            /* top: 50%; */
+            /* transform: translate(-50%, -50%); */
             width: 320px;
             height: 480px;
-            background-color: #111;
+            background-color: transparent;
+            backdrop-filter: blur(6px);
             border-radius: 20px;
             box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
-            box-shadow: 0 0 20px #555;
+            box-shadow: 0 40px 20px #0000008a, inset -10px 10px 10px #ffffff11, inset 0 0 40px #ffffff3a;
+            border-top: solid 1px #ffffff67;
+            border-right: solid 1px #ffffff67;
             user-select: none;
             cursor: pointer;
             overflow: hidden;
             user-select: none;
+            touch-action: none;
+            transition: ease-in-out 750ms;
+            
         }
-    
+        .range__wrapper:hover {
+            background-color: #ffffff16;
+        }
+        .range__wrapper::after {
+            content: 'Portfolio Progress';
+            position: absolute;
+            top: 10px;
+            left: 80px;
+            transform: translate(-50% -50%);
+            color: #ffffff87;
+            font-weight: lighter;
+            font-size: 0.75rem;
+            text-align: center;
+            width: 160px;
+        }
         .range__input {
             display: none;
         }
@@ -675,17 +700,16 @@ button:hover {
         }
     
         .range__slider__path {
-            fill: #ededed;
-            stroke: #555;
+            fill: #ededed98;
+            stroke: #ffffff88;
             stroke-linejoin: round;
-            stroke-width: 3px;
+            stroke-width: 2px;
             stroke-linecap: round;
         }
     
         .range__marks__path {
             fill: none;
             stroke-dashoffset: 3px;
-            fill: #ccc;
             stroke: orangered;
             stroke-width: 2px;
         }
@@ -693,6 +717,7 @@ button:hover {
         .range__marks__pink {
             stroke: #555;
             text-shadow: 0 0 3px aqua;
+            background-color: lime;
         }
     
         .range__marks__white {
@@ -710,43 +735,47 @@ button:hover {
         .range__value {
             box-sizing: border-box;
             display: flex;
+            align-items: center;
             width: 100%;
             padding: 40px 30px;
         }
-    
+        
         .range__value--top {
             position: absolute;
             bottom: 100%;
-            color: #ccc;
+            color: #ccccccc7;
+            text-shadow: 0 0 3px rgba(255, 255, 255, 0.333);
         }
-    
+        
         .range__value--bottom {
             color: #555;
         }
-    
+        
         .range__value__number {
             font-size: 70px;
             margin: 0 10px;
         }
-    
+        
         .range__value__number--top {
-            transform-origin: 100% 100%; 
+            /* transform-origin: 100% 100%;  */
         }
-    
+        
         .range__value__number--bottom {
-            transform-origin: 100% 0;
+            /* transform-origin: 100% 0; */
         }
-    
+        
         .range__value__text {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            height: 70px;
             font-size: 13px;
+            font-size: 1rem;
             text-transform: uppercase;
 
         }
         .range__value__text span:first-child {
             margin-bottom: 3px;
-            font-size: 1.5rem;
             font-weight: bolder;
         }
     
@@ -761,9 +790,23 @@ button:hover {
     
         .range__value__text--top {
             align-self: flex-end;
-            margin-bottom: 13px;
+            /* margin-bottom: 13px; */
         }
     
         .range__value__text--bottom {
-            margin-top: 10px;
+            /* margin-top: 10px; */
+        }
+
+        .range__value__number--top .percentage {
+            text-shadow: 0 0 3px #ffffff4a;
+            color: rgba(255, 255, 255, 0.15);
+        }
+        .percentage {
+            color: rgba(255, 255, 255, 0.05);
+            text-shadow: 0 0 3px #00000079;
+            font-size: 30px;
+            right: 50%;
+            bottom: 50%;
+            transform: translate(125%, 0%);
+            z-index: -3;
         }
