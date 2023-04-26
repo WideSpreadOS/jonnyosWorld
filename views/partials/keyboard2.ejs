@@ -1,0 +1,402 @@
+<style>
+    #keyboardContainer {
+    }
+    
+    #keyboard {
+        flex-direction: column;
+        align-items: center;
+        /* background-color: rgba(0, 255, 255, 0.25); */
+        justify-content: center;
+        padding: 4px;
+        border-bottom: solid 1px aqua;
+
+        padding-top: 8px
+    }
+    .keyboard-row {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        padding: 3px;
+        gap: 0.25rem;
+    }
+    .keyboard-key {
+        text-align: center;
+        padding: 5px;
+        background-color: #01010175;
+        box-shadow: 0 0 5px aqua;
+        border-radius: 4px;
+        color: #fff;
+    }
+    .keyboard-key:active {
+        background-color: aqua;
+    }
+    .backspace-key {
+        background-color: rgba(255, 68, 0, 0.75);
+    }
+    .double-key {
+        width: 50px;
+    }
+    .single-key {
+        width: 25px;
+        transition: ease-in-out 200ms;
+    }
+    .letter-key {
+    }
+    .single-key:hover {
+    }
+    .key-toggle-on:hover {
+    }
+    .key-toggle-active {
+        background-color: rgba(0, 255, 255, 0.5);
+    }
+    #row4 > div {
+        width: 60%;
+    }
+    #keyboardOptions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .keyboard-option {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+    }
+    .keyboard-option i {
+        font-size: 1.5rem;
+        color: #fff;
+    }
+</style>
+
+
+<div id="keyboardContainer">
+    <div id="keyboard" class="hidden">
+        <div class="keyboard-row" id="row0"></div>
+        <div class="keyboard-row" id="row1"></div>
+        <div class="keyboard-row" id="row2"></div>
+        <div class="keyboard-row" id="row3"></div>
+        <div class="keyboard-row" id="row4"></div>
+    </div>
+    <div id="keyboardOptions">
+        <div class="keyboard-option"><i class="bx bx-brightness-half"></i></div>
+        <div class="keyboard-option"><i class="bx bx-cool"></i></div>
+        <div class="keyboard-option"><i class="bx bx-cog"></i></div>
+        <div id="openCloseKeyboard" data-state="false" class="keyboard-option"><i class="bx bx-sort-z-a" id="showIcon"></i><i class="bx bx-sort-a-z hidden" id="hideIcon"></i></div>
+    </div>
+</div>
+
+<script>
+    const 
+        keyboardContainer = document.getElementById('keyboardContainer'),
+        keyboardOptions = document.getElementById('keyboardOptions'),
+        showIcon = document.getElementById('showIcon'),
+        hideIcon = document.getElementById('hideIcon'),
+        keyboard = document.getElementById('keyboard'),
+        row0 = document.getElementById('row0'),
+        row1 = document.getElementById('row1'),
+        row2 = document.getElementById('row2'),
+        row3 = document.getElementById('row3'),
+        row4 = document.getElementById('row4'),
+        openCloseKeyboard = document.getElementById('openCloseKeyboard')
+
+        // BUILD THE KEYBOARD
+
+
+        // TO DO buildKeyboard():
+
+            // [] - add 2 parameters to buildKeyboard(type, keyoard)
+            // [] - the keyboard parameter inside buildKeyboard(defaultKeyboard) will be a reference to an object of a keyboard
+            //      example:
+            //      const defaultKeyboard = {
+            //          language: 'en-us',
+            //          initial_defaults: {
+            //              text: 0,
+            //              numeric: 3,
+            //              phone: 6,
+            //              reaction: 4
+            //          },
+            //          layouts: [
+            //              {
+            //                  page: 0,
+            //                  layout_type: 'alpha',
+            //                  layout_type_style: 'lower',
+            //                  row_0: [r001, r002, r003, r004, r005, r006, r007, r008, r009, r010, r011, r012, r013, r014,],
+            //                  row_1: [r101, r102, r103, r104, r105, r106, r107, r108, r109, r110, r111, r112, r113, r114,],
+            //                  row_2: [r201, r202, r203, r204, r205, r206, r207, r208, r209, r210, r211, r212, r213, r214,],
+            //                  row_3: [r301, r302, r303, r304, r305, r306, r307, r308, r309, r310, r311, r312, r313, r314,],
+            //                  row_4: [r401, r402, r403, r404, r405, r406, r407, r408, r409, r410, r411, r412, r413, r414,],
+            //              },
+            //              {
+            //                  page: 1,
+            //                  layout_type: 'alpha',
+            //                  layout_type_style: 'upper',
+            //                  row_0: [r001, r002, r003, r004, r005, r006, r007, r008, r009, r010, r011, r012, r013, r014,],
+            //                  row_1: [r101, r102, r103, r104, r105, r106, r107, r108, r109, r110, r111, r112, r113, r114,],
+            //                  row_2: [r201, r202, r203, r204, r205, r206, r207, r208, r209, r210, r211, r212, r213, r214,],
+            //                  row_3: [r301, r302, r303, r304, r305, r306, r307, r308, r309, r310, r311, r312, r313, r314,],
+            //                  row_4: [r401, r402, r403, r404, r405, r406, r407, r408, r409, r410, r411, r412, r413, r414,],
+            //              }
+            //          ]
+            //      }
+ 
+            // [] - function buildKeyboard(type, keyboard) {
+            //          let
+            //              initialKeyboard,
+            //              initialKeyboardLayout,
+            //              initialDefault = keyboard.initial_defaults
+
+            //          if (type === 'text') {
+            //              initialKeyboard = initialDefault.text
+            //          }
+            //          if (type === 'numeric') {
+            //              initialKeyboard = initialDefault.numeric
+            //          }
+            //          if (type === 'phone') {
+            //              initialKeyboard = initialDefault.phone
+            //          }
+            //          if (type === 'reaction') {
+            //              initialKeyboard = initialDefault.reaction
+            //          }
+            //          if (type === 'custom') {
+            //              initialKeyboard = initialDefault.custom
+            //          }
+            //          
+            //          
+            //          initialKeyboardLayout = keyboard.layouts[initialKeyboard]
+            //          
+            //          
+            //      }
+            // [] - 
+
+            const row0Data = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'del']
+            const row1Data = ['tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']']
+            const row2Data = ['caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'enter']
+            const row3Data = ['shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/']
+            const row4Data = ['space']
+        function buildKeyboard() {
+
+
+            const letters = {
+                row1: row1Data.slice(1, 11),
+                row2: row2Data.slice(1, 10),
+                row3: row3Data.slice(1, 8)
+            }
+            // console.log(letters)
+
+            // console.log(row0Data.length)
+            // console.log(row1Data.length)
+            // console.log(row2Data.length)
+            // console.log(row3Data.length)
+            // console.log(row4Data.length)
+
+
+            row0Data.forEach((data, index) => {
+                let newKey                    
+                newKey = document.createElement('div')
+                newKey.classList.add('keyboard-key')
+                if (index === 13) {
+                    newKey.classList.add('double-key')
+                    newKey.classList.add('backspace-key')
+                } else {
+                    newKey.classList.add('single-key')
+                }
+                newKey.setAttribute('data-key-id', data)
+                newKey.setAttribute('data-key-value', data)
+                newKey.innerText = data
+                row0.appendChild(newKey)
+            })
+
+            row1Data.forEach((data, index) => {
+                let newKey
+                newKey = document.createElement('div')
+                newKey.classList.add('keyboard-key')
+                if (index === 0) {
+                    newKey.classList.add('double-key')
+                } else {
+                    newKey.classList.add('single-key')
+                    newKey.classList.add('letter-key')
+                }
+                newKey.setAttribute('data-key-id', data)
+                newKey.setAttribute('data-key-value', data)
+
+                newKey.innerText = data
+                row1.appendChild(newKey)
+            })
+        
+            row2Data.forEach((data, index) => {
+                let newKey
+                newKey = document.createElement('div')
+                newKey.classList.add('keyboard-key')
+                if (index === 0 || index === 12) {
+                    if (index === 0) {
+                        newKey.classList.add('key-toggle-on')
+                        newKey.setAttribute('data-key-type', 'caps_lock')
+                    }
+                    newKey.classList.add('double-key')
+                } else {
+                    newKey.classList.add('single-key')
+                    newKey.classList.add('letter-key')
+                }
+                newKey.setAttribute('data-key-id', data)
+                newKey.setAttribute('data-key-value', data)
+
+                newKey.innerText = data
+                row2.appendChild(newKey)
+            })
+            row3Data.forEach((data, index) => {
+                let newKey
+                newKey = document.createElement('div')
+                newKey.classList.add('keyboard-key')
+                if (index === 0) {
+                    newKey.classList.add('double-key')
+                    newKey.classList.add('shift-key')
+                    newKey.classList.add('key-toggle-on')
+                    newKey.setAttribute('data-key-type', 'shift')
+                    newKey.style.pointerEvents = 'none'
+                } else {
+                    newKey.classList.add('single-key')
+                    newKey.classList.add('letter-key')
+
+                }
+                newKey.setAttribute('data-key-id', data)
+                newKey.setAttribute('data-key-value', data)
+
+                newKey.innerText = data
+                row3.appendChild(newKey)
+            })
+            row4Data.forEach((data, index) => {
+                const newKey = document.createElement('div')
+                newKey.classList.add('keyboard-key')
+                newKey.setAttribute('data-key-id', data)
+                newKey.setAttribute('data-key-value', data)
+
+                newKey.innerText = data
+                row4.appendChild(newKey)
+            })
+        }
+        buildKeyboard()
+
+
+        function getKeyboardValues() {
+            const allKeyboardKeys = document.querySelectorAll('.keyboard-key')
+            allKeyboardKeys.forEach((key, index) => {
+                // console.log(key)
+                // console.log(index)
+                // console.log(`key: ${index}: ${key}`)
+                key.addEventListener('click', e => {
+                    // console.log(e.path[0].dataset.keyId)
+                    pressKey(key)
+                })
+
+            })
+        }
+
+        getKeyboardValues()
+        function toggleLower(letter) {
+            // console.log(letter)
+            const keyValue = letter.getAttribute('data-key-value').toLowerCase()
+            letter.setAttribute('data-key-value', keyValue)
+            letter.innerText = keyValue
+        }
+
+        function pressKey(key) {
+            console.log('pressKey(key) invoked: next should the (key) value...')
+            console.log(key)
+        }
+
+        const shiftKeyBtn = document.querySelector('.shift-key')
+        shiftKeyBtn.addEventListener('click', e => {
+            shiftKeyBtn.classList.toggle('shift-key-active')
+        })
+        const allToggleKeys = document.querySelectorAll('.key-toggle-on')
+        allToggleKeys.forEach(toggleKey => {
+            toggleKey.addEventListener('click', e => {
+                toggleKey.classList.toggle('key-toggle-active')
+                const keyType = toggleKey.getAttribute('data-key-type')
+                let allLetters = []
+                    const
+                        row1 = row1Data.slice(1, 11),
+                        row2 = row2Data.slice(1, 10),
+                        row3 = row3Data.slice(1, 8)
+
+                    row1.forEach(letter => {
+                        allLetters.push(letter)
+                    })
+                    row2.forEach(letter => {
+                        allLetters.push(letter)
+                    })
+                    row3.forEach(letter => {
+                        allLetters.push(letter)
+                    })
+                console.log(allLetters)
+                const allKeys = document.querySelectorAll('.single-key')
+                allKeys.forEach(singleKey => {
+                    // console.log('singleKey: ', singleKey)
+                    const singleKeyValue = singleKey.getAttribute('data-key-value')
+                    const singleKeyId = singleKey.getAttribute('data-key-id')
+                    if (keyType === 'caps_lock' && toggleKey.classList.contains('key-toggle-active')) {
+                            allLetters.forEach(singleLetter => {
+                                if (singleKeyId == singleLetter) {
+                                    const uppercaseLetter = singleLetter.toUpperCase()
+                                    singleKey.innerText = uppercaseLetter
+                                    singleKey.setAttribute('data-key-value', uppercaseLetter)
+                                    singleKey.classList.toggle('uppercase')
+                                }
+                            })
+
+                        console.log('CAPS LOCK')
+                        
+                    } else if (keyType === 'caps_lock' && !toggleKey.classList.contains('key-toggle-active')) {
+                        singleKey.innerText = singleKeyValue.toLowerCase()
+                        singleKey.setAttribute('data-key-value', singleKeyValue.toLowerCase())
+                    } else {
+                        console.log('hmmmm.... caps locks problem')
+                    }
+
+                })
+
+            })
+        })
+
+        // function toggleKey(key) {
+            
+        // }
+
+        // function toggleUppercase(keyEl, key) {
+        //     keyEl.innerText = key.toUpperCase()
+        //     keyEl.setAttribute('data-key-value', key.toUpperCase())
+        // }
+        // function toggleLowercase(keyEl, key) {
+        //     keyEl.innerText = key.toLowerCase()
+        //     keyEl.setAttribute('data-key-value', key.toLowerCase())
+        // }
+        openCloseKeyboard.addEventListener('click', e => {
+            let keyboardState = openCloseKeyboard.getAttribute('data-state')
+            let el = e.target
+            console.log(el)
+
+
+            if (keyboardState == 'false') {
+                openCloseKeyboard.setAttribute('data-state', 'true')
+                console.log('HIDE UP CARET')
+                showIcon.classList.toggle('hidden')
+                hideIcon.classList.toggle('hidden')
+                keyboard.classList.toggle('hidden')
+            } else if (keyboardState == 'true') {
+                openCloseKeyboard.setAttribute('data-state', 'false')
+                console.log('HIDE DOWN CARET')
+                showIcon.classList.toggle('hidden')
+                hideIcon.classList.toggle('hidden')
+                keyboard.classList.toggle('hidden')
+            } else {
+                console.log('hmmmm.... no keyboard state')
+            }
+
+    })
+</script>

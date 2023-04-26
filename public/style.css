@@ -54,6 +54,52 @@ body {
 .hidden {
     display: none;
 }
+
+
+#bgThree {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -50000;
+    background-image: url('/images/bg_universe_1a.jpg');
+    background-size: cover;
+    backdrop-filter: brightness(50%);
+}
+
+canvas {
+    display: block;
+}
+
+#canvas_container {
+    width: 100%;
+    height: 100vh;
+}
+
+button {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #111;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.9em;
+    background: #000000;
+    color: #111;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+button:hover {
+    background: #ffffff;
+    color: #000000;
+}
     @media screen and (min-width: 300px) {
         .page-title {
             background-color: aqua;
@@ -62,11 +108,11 @@ body {
         
         
         #mainMenu {
-            position: fixed;
+            /* position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            width: 100vw;
+            width: 100vw; */
             height: 3rem;
             z-index: 80000;
             background-color: #01010125;
@@ -100,7 +146,6 @@ body {
             z-index: -1;
             height: 100vh;
             min-height: 100vh;
-            max-height: 100vh;
             overflow-x: hidden;
             overflow-x: auto;
     
@@ -600,3 +645,125 @@ body {
         color: #000;
         font-weight: bold;
     }
+
+
+        .range__wrapper {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            height: 480px;
+            background-color: #111;
+            border-radius: 20px;
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 20px #555;
+            user-select: none;
+            cursor: pointer;
+            overflow: hidden;
+            user-select: none;
+        }
+    
+        .range__input {
+            display: none;
+        }
+    
+        .range__slider {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    
+        .range__slider__path {
+            fill: #ededed;
+            stroke: #555;
+            stroke-linejoin: round;
+            stroke-width: 3px;
+            stroke-linecap: round;
+        }
+    
+        .range__marks__path {
+            fill: none;
+            stroke-dashoffset: 3px;
+            fill: #ccc;
+            stroke: orangered;
+            stroke-width: 2px;
+        }
+    
+        .range__marks__pink {
+            stroke: #555;
+            text-shadow: 0 0 3px aqua;
+        }
+    
+        .range__marks__white {
+            stroke: #111;
+        }
+    
+        .range__values {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+    
+    
+        .range__value {
+            box-sizing: border-box;
+            display: flex;
+            width: 100%;
+            padding: 40px 30px;
+        }
+    
+        .range__value--top {
+            position: absolute;
+            bottom: 100%;
+            color: #ccc;
+        }
+    
+        .range__value--bottom {
+            color: #555;
+        }
+    
+        .range__value__number {
+            font-size: 70px;
+            margin: 0 10px;
+        }
+    
+        .range__value__number--top {
+            transform-origin: 100% 100%; 
+        }
+    
+        .range__value__number--bottom {
+            transform-origin: 100% 0;
+        }
+    
+        .range__value__text {
+            display: flex;
+            flex-direction: column;
+            font-size: 13px;
+            text-transform: uppercase;
+
+        }
+        .range__value__text span:first-child {
+            margin-bottom: 3px;
+            font-size: 1.5rem;
+            font-weight: bolder;
+        }
+    
+        .range__value__text span:last-child {
+            font-weight: lighter;
+            color: #fff;
+        }
+        .red-text {
+            font-weight: lighter;
+            color: red;
+        }
+    
+        .range__value__text--top {
+            align-self: flex-end;
+            margin-bottom: 13px;
+        }
+    
+        .range__value__text--bottom {
+            margin-top: 10px;
+        }
