@@ -2,6 +2,12 @@
 font-family: 'Herr Von Muellerhoff', cursive;
 font-family: 'Thasadith', sans-serif;
 */
+
+@font-face {
+    font-family: Otto;
+    src: url('../fonts/cursive.ttf');
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -10,8 +16,21 @@ font-family: 'Thasadith', sans-serif;
 body {
     background-color: #010101;
     font-family: 'Thasadith', sans-serif;
+    overflow-x: hidden;
 }
+.range__wrapper {
+    -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
 
+}
+.range__wrapper:focus {
+    outline: none !important;
+}
 #bgImage {
     position: fixed;
     top: 0;
@@ -37,22 +56,169 @@ body {
     background-color: rgba(0, 255, 255, 0.25);
     backdrop-filter: blur(10px);
 }
+
+/* MAIN MENU */
+#mainMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 5rem;
+    z-index: 80000;
+    background-color: #01010125;
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: solid 2px aqua;
+    box-shadow: 0 0 20px rgba(0, 255, 242, 0.958);
+}
+
+#mainMenu .main-menu-item a {
+    font-family: 'Otto';
+    padding: 5px;
+    font-size: 2.5rem;
+    color: #fff;
+    text-decoration: none;
+    user-select: none;
+}
+
+#mainMenu .main-menu-item-active a {
+    color: aqua;
+}
+.main-menu-item a {
+    font-family: 'Otto';
+    font-size: 2rem;
+}
+
+#signatureContainer {
+    width: 100vw;
+    background-color: #0000002c;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+}
+#signatureContainer  h1{
+    rotate: -10deg;
+    font-family: 'Otto';
+    font-size: 25rem;
+    font-weight: lighter;
+    text-shadow: 0 0 10px aqua;
+    opacity: 0.45;
+    user-select: none;
+    animation-name: 'glow';
+    animation-duration: 2000;
+    animation-direction: alternate-reverse;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px aqua;
+    }
+
+    50% {
+        text-shadow: 0 0 30px #fff;
+    }
+
+    100% {
+        text-shadow: 0 0 10px aqua;
+    }
+}
+.page-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: hotpink;
+    padding: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.page-background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+background-color: rgba(0, 0, 0, 0.365);
+    box-shadow: inset 0 0 300px rgba(27, 35, 36, 0.781);
+}
+.page-background img {
+    max-width: 100%;
+}
+
+.page {
+    position: relative;
+    width: 100vw;
+    padding-bottom: 100vh;
+    z-index: 1;
+    min-height: 120vh;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: -20vh;
+    overflow-x: hidden;
+}
+
+
+
 .page-header {
-    margin-top: 100px;    
-    margin-bottom: 30px;    
-    border-top: solid 1px #fff;
-    border-bottom: solid 1px #fff;
+    margin-top: 40vh;    
+    margin-bottom: 25rem;    
     width: 100%;
     z-index: 3;
 }
 .page-header h1 {
-    font-family: 'Herr Von Muellerhoff', cursive;
+    font-family: 'Otto';
     text-align: center;
-    font-size: 3rem;
+    font-size: 8rem;
     padding-top: 5px;
     font-weight: lighter;
     color: #fff;
+    cursor: default;
+    user-select: none;
 }
+
+.page-section {
+    background-color: rgba(0, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    width: 800px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.page-section-link {
+    background-color: rgba(0, 255, 255, 0.25);
+    box-shadow: inset 0 0 12px #ffffff7a;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: fit-content;
+}
+
+.page-section a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.25rem;
+}
+
 
 
 .hidden {
@@ -104,20 +270,170 @@ button:hover {
     background: #ffffff;
     color: #000000;
 }
-    @media screen and (min-width: 300px) {
+
+
+
+    @media screen and (max-width: 900px) {
+
+        #signatureContainer {
+
+        }
+                        
+        #signatureContainer h1 {
+            font-family: 'Otto';
+            font-size: 10rem;
+            font-weight: lighter;
+        }
+        #mainMenu {
+
+            width: 100vw;
+            height: 4rem;
+            background-color: #01010125;
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: space-evenly;
+            border-bottom: solid 2px aqua;
+            box-shadow: 0 0 20px rgba(0, 255, 242, 0.5);
+            transition: ease-in-out 500ms;
+            z-index: 99900;
+        }
+        #mainMenu:hover {
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 255, 255, 0.25);
+        }
+        #mainMenu .main-menu-item a {
+            font-family: 'Otto';
+            font-size: 2rem;
+            color: #fff;
+            text-decoration: none;
+            transition: ease-out 1250ms;
+            text-shadow: 0 0 2px transparent;
+            user-select: none;
+        }
+        #mainMenu .main-menu-item-active a {
+            color: aqua;
+        }
+        #mainMenu .main-menu-item a:hover {
+            text-shadow: 0 0 6px #010101;
+            color: aqua;
+            transition: ease-in 250ms;
+        }
+        .spread-card-data {
+            width: 80%;
+        }
+
+        .spread-card:hover .spread-card-data {
+            /* scale: 1.1; */
+        }
+
+        .spread-card-header h2 {
+            font-size: 3rem;
+        }
+
+
+        .page-header h1 {
+            font-size: 5rem;
+        }
+    }
+
+    @media screen and (orientation: landscape) and (min-width: 900px) {
+        .spread-card {
+            width: 40%;
+            max-height: 50vh;
+
+        }
+
+        .spread-card-data {
+            flex-direction: column;
+        }
+
+        .spread-card-header,
+        .spread-card-body,
+        .spread-card-footer {
+            position: relative;
+            top: auto;
+            left: auto;
+            right: auto;
+            bottom: auto;
+            width: calc(100% + 2px);
+        }
+
+        .spread-card-header {
+            margin-top: -1px;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            background-color: rgba(0, 255, 255, 0.25);
+        }
+
+        .spread-card-body {
+            border: none;
+            border-top: solid 1px aqua;
+            border-bottom: solid 1px aqua;
+            border-radius: 0;
+            width: calc(100% + 2px);
+        }
+
+        .spread-card-body p {
+            font-size: 1.2rem;
+        }
+
+        .spread-card-body-slider {
+            background-color: transparent;
+            transition: ease-in-out 500ms;
+            backdrop-filter: blur(0);
+        }
+
+        .spread-card-body-slider:hover {
+            background-color: rgba(0, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+        }
+
+        .spread-card-body-slider:hover::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 255, 255, 1);
+            box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.75);
+        }
+
+        .spread-card-footer {
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            transition: ease-in-out 250ms;
+        }
+
+        .spread-card-footer:hover {
+            background-color: aqua;
+        }
+
+        .spread-card-footer:hover a {
+            text-shadow: 0 0 5px #000;
+        }
+
+
+    }
+    @media screen and (max-width: 400px) {
         .page-title {
             background-color: aqua;
             box-shadow: 0 0 10px aqua;
         }
         
+                #signatureContainer {
+
+                }
         
+                #signatureContainer h1 {
+                    font-family: 'Otto';
+                    font-size: 6rem;
+                    font-weight: lighter;
+                }
         #mainMenu {
-            /* position: fixed;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            width: 100vw; */
-            height: 3rem;
+            width: 100vw;
+            height: 4rem;
             z-index: 80000;
             background-color: #01010125;
             backdrop-filter: blur(4px);
@@ -130,11 +446,12 @@ button:hover {
             box-shadow: 0 0 20px rgba(0, 255, 242, 0.958);
         }
         #mainMenu .main-menu-item a {
-            font-family: 'Herr Von Muellerhoff', cursive;
-            padding: 15px;
+            font-family: 'Otto';
+            padding: 5px;
             font-size: 1.5rem;
             color: #fff;
             text-decoration: none;
+            user-select: none;
         }
         #mainMenu .main-menu-item-active a {
             color: aqua;
@@ -145,14 +462,44 @@ button:hover {
             left: 0;
             width: 100vw;
             right: 0;
-            padding-top: 100px;
-            margin-top: 100px;
+            padding-top: 200px;
             z-index: -1;
             height: 100vh;
             min-height: 100vh;
             overflow-x: hidden;
             overflow-x: auto;
     
+        }
+
+        .page-header {
+            margin-top: 40vh;
+        }
+        .page-header h1 {
+            font-size: 5rem;
+        }
+        .page-section {
+            margin-bottom: 25vh;
+        }
+        .page-section-body h3 {
+            font-size: 5rem;
+            color: #fff;
+            font-family: 'Otto';
+            text-align: center;
+            font-weight: lighter;
+            margin-bottom: 2rem;
+        }
+        .page-section-body h5 {
+            color: aqua;
+            font-size: 2rem;
+            text-align: center;
+            border-bottom: solid 1px #fff;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            font-weight: lighter;
+        }
+
+        .page-section-body p {
+            color: #fff;
         }
         .hidden {
             display: none;
@@ -454,132 +801,7 @@ button:hover {
         }
     }
 
-    @media screen and (min-width: 900px) {
-        #mainMenu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100vw;
-            height: 5rem;
-            background-color: #01010125;
-            backdrop-filter: blur(4px);
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            align-items: center;
-            justify-content: space-evenly;
-            border-bottom: solid 2px aqua;
-            box-shadow: 0 0 20px rgba(0, 255, 242, 0.958);
-            transition: ease-in-out 500ms;
-        }
-        #mainMenu:hover {
-            backdrop-filter: blur(10px);
-            background-color: rgba(0, 255, 255, 0.25);
-        }
-        #mainMenu .main-menu-item a {
-            font-family: 'Herr Von Muellerhoff', cursive;
-            padding: 15px;
-            font-size: 2.5rem;
-            color: #fff;
-            text-decoration: none;
-            transition: ease-out 1250ms;
-            text-shadow: 0 0 2px transparent;
-        }
-        #mainMenu .main-menu-item-active a {
-            color: aqua;
-        }
-        #mainMenu .main-menu-item a:hover {
-            text-shadow: 0 0 6px #010101;
-            color: aqua;
-            transition: ease-in 250ms;
-        }
-        .spread-card-data {
-            width: 80%;
-        }
 
-        .spread-card:hover .spread-card-data {
-            /* scale: 1.1; */
-        }
-
-        .spread-card-header h2 {
-            font-size: 3rem;
-        }
-    }
-
-    @media screen and (orientation: landscape) and (min-width: 900px) {
-        .spread-card {
-            width: 40%;
-            max-height: 50vh;
-
-        }
-
-        .spread-card-data {
-            flex-direction: column;
-        }
-
-        .spread-card-header,
-        .spread-card-body,
-        .spread-card-footer {
-            position: relative;
-            top: auto;
-            left: auto;
-            right: auto;
-            bottom: auto;
-            width: calc(100% + 2px);
-        }
-
-        .spread-card-header {
-            margin-top: -1px;
-            border-top-left-radius: 16px;
-            border-top-right-radius: 16px;
-            background-color: rgba(0, 255, 255, 0.25);
-        }
-
-        .spread-card-body {
-            border: none;
-            border-top: solid 1px aqua;
-            border-bottom: solid 1px aqua;
-            border-radius: 0;
-            width: calc(100% + 2px);
-        }
-
-        .spread-card-body p {
-            font-size: 1.2rem;
-        }
-
-        .spread-card-body-slider {
-            background-color: transparent;
-            transition: ease-in-out 500ms;
-            backdrop-filter: blur(0);
-        }
-
-        .spread-card-body-slider:hover {
-            background-color: rgba(0, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-        }
-
-        .spread-card-body-slider:hover::-webkit-scrollbar-thumb {
-            background-color: rgba(0, 255, 255, 1);
-            box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.75);
-        }
-
-        .spread-card-footer {
-            border-bottom-left-radius: 16px;
-            border-bottom-right-radius: 16px;
-            transition: ease-in-out 250ms;
-        }
-
-        .spread-card-footer:hover {
-            background-color: aqua;
-        }
-
-        .spread-card-footer:hover a {
-            text-shadow: 0 0 5px #000;
-        }
-
-
-    }
     #virtualKeyboardData {
         margin-bottom: 100vh;
 
@@ -810,3 +1032,8 @@ button:hover {
             transform: translate(125%, 0%);
             z-index: -3;
         }
+
+
+
+
+
