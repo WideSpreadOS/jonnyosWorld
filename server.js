@@ -25,6 +25,11 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
     res.render('home', {pageTitle: 'Home'})
 })
+
+app.get('/landing', (req, res) => {
+    res.render('landing', {pageTitle: 'Landing'})
+})
+
 app.get('/portfolio', (req, res) => {
     res.render('portfolio', {pageTitle: 'Portfolio'})
 })
